@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "root": "",
@@ -28,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/style/styles.scss",
+              "src/style/w3.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/externalJs/script.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -93,9 +100,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/style/styles.scss",
+              "src/style/w3.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/externalJs/script.js"
+            ]
           }
         },
         "lint": {
@@ -124,6 +138,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "tuition-mgmt-system"
 }

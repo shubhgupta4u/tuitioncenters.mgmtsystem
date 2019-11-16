@@ -1,32 +1,36 @@
-import { Component ,OnInit} from '@angular/core';
-import { ApiClientService } from '../services/api-client.service';
+import { Component,OnInit  } from '@angular/core';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import * as jquery from 'jquery';
+
+declare const  closeSideNavigationBar: any;
+declare const  stopBodyScrolling:any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'tuition-mgmt-system';
+export class AppComponent implements OnInit  {
 
-  constructor(private apiClientService: ApiClientService) { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.apiClientService.get("api/Comment").subscribe((data)=>{
-      console.log(data);
-    },error=>{
-      console.error(error);
-    });
-    this.apiClientService.get("api/Hello").subscribe((data)=>{
-      console.log(data);
-    },error=>{
-      console.error(error);
-    });
-    this.apiClientService.get("").subscribe((data)=>{
-      console.log(data);
-    },error=>{
-      console.error(error);
-    })
-  }
+    ngOnInit() {
+      
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            setTimeout(function(){
+              $('#site-body').css('margin-top',$('#site-header').outerHeight());
+            },500);
+            
+            this.closeSideNavBar();
+            stopBodyScrolling(false);
+            window.scrollTo(0, 0);            
+        });
+      }
 
+      closeSideNavBar(){
+        closeSideNavigationBar();
+      }
 }
