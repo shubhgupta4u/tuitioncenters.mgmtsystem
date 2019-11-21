@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/seller";
+    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/institute";
     this.authenticationService.getUserCredential().subscribe(credential=>{
       if(credential && credential.rememberMe){
         this.model.username=credential.username;

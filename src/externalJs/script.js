@@ -1,5 +1,3 @@
-alert('test');
-
 function attachSidebarCollapseClickedHandler() {
   var sidebarButton = document.getElementById("sidebarCollapse");
   if (sidebarButton != null && sidebarButton != undefined) {

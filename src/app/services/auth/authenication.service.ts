@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
- 
+import { map, catchError, tap } from 'rxjs/operators';
 import { Configuration } from "../../models/config";
 import { CryptoService } from '../crypto/crypto.service';
+import { ApiManagerService } from '../common/api-manager.service';
 
 @Injectable()
 export class AuthenticationService {
     private authenticationServiceUrl: string;
-    constructor(private http: HttpClient, private configuration: Configuration,
+    constructor(private apiManagerService: ApiManagerService, private configuration: Configuration,
                 private cryptoService:CryptoService) { 
         this.configuration = new Configuration();
         this.authenticationServiceUrl = this.configuration.baseUrl + "authenticate";
@@ -18,8 +18,14 @@ export class AuthenticationService {
     login(username: string, password: string,rememberMe:boolean) {
         let cypherText:string = this.cryptoService.encrypt(password);
         let cypherUsername:string = this.cryptoService.encrypt(username);
-        return this.http.post(this.authenticationServiceUrl, { username: cypherUsername, password: cypherText })
-            .map((response:Response) => {
+        var body: any = {};
+        body.email = cypherUsername;
+        body.password = cypherText;
+        var serializeUser = JSON.stringify(body);
+        var data:any ={};
+        data.data = this.cryptoService.encrypt(serializeUser);
+        return this.apiManagerService.postRequest('token',data).pipe(
+            tap(response=>{
                 let user:any=response;
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -34,7 +40,7 @@ export class AuthenticationService {
                     localStorage.removeItem(this.configuration.rememberMeKey);
                 }
                 return user;
-            });
+        }));
     }
 
     getUserCredential(): Observable<any>{

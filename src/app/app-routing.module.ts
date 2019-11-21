@@ -13,7 +13,7 @@ const appRoutes: Routes = [
   { path: 'login', loadChildren: 'src/app/components/login/login.module#LoginModule' },
   { path: 'signup', loadChildren: 'src/app/components/register/register.module#RegisterModule' },
   // { path: 'filter/:id', component: SidebarFilterComponent },
-  // { path: 'seller', loadChildren: 'app/components/site-dashboard/seller/seller.module#SellerModule' },
+  { path: 'institute', loadChildren: 'src/app/components/tuition-centre/tuition-centre.module#TuitionCentreModule' },
 
   {
     path: '',
