@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Configuration } from '../../models/config';
 import { AES, enc } from "crypto-js";
-// var CryptoJS = require("crypto-js")
+// import * as CryptoJS from 'crypto-js';
 declare var CryptoJS: any
 @Injectable()
 export class CryptoService {
