@@ -14,7 +14,14 @@ export class AuthenticationService {
         this.configuration = new Configuration();
         this.authenticationServiceUrl = this.configuration.baseUrl + "authenticate";
     }
- 
+    activateAccount(activationCode:string){
+        var body: any = {};
+        body.activationCode = activationCode;
+        var serializeUser = JSON.stringify(body);
+        var data:any ={};
+        data.data = this.cryptoService.encrypt(serializeUser);
+        return this.apiManagerService.postRequest('activateAccount',data);
+    }
     login(username: string, password: string,rememberMe:boolean) {
         let cypherText:string = this.cryptoService.encrypt(password);
         let cypherUsername:string = this.cryptoService.encrypt(username);

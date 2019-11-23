@@ -11,10 +11,10 @@ const appRoutes: Routes = [
   // { path: 'category/:id', loadChildren:'app/components/site-dashboard/search/search.module#SearchModule' },
   // { path: 'search/:id/:searchText', loadChildren:'app/components/site-dashboard/search/search.module#SearchModule'},
   { path: 'login', loadChildren: 'src/app/components/login/login.module#LoginModule' },
+  { path: 'confirm', loadChildren: 'src/app/components/login/login.module#LoginModule' },
   { path: 'signup', loadChildren: 'src/app/components/register/register.module#RegisterModule' },
   // { path: 'filter/:id', component: SidebarFilterComponent },
   { path: 'institute', loadChildren: 'src/app/components/tuition-centre/tuition-centre.module#TuitionCentreModule' },
-
   {
     path: '',
     redirectTo: '/home',

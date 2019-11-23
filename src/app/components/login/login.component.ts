@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { AlertNotifierService } from "../../services/alert/alert-notifier.service";
 import { AuthenticationService } from "../../services/auth/authenication.service";
 import { DataChangeNotifierService } from "../../services/datachangenotifier/data-change-notifier.service";
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: "app-login",
@@ -20,21 +22,30 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertNotifierService,
-    private dataChangeNotifier:DataChangeNotifierService
-  ) {}
+    private dataChangeNotifier: DataChangeNotifierService
+  ) { }
 
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/institute";
-    this.authenticationService.getUserCredential().subscribe(credential=>{
-      if(credential && credential.rememberMe){
-        this.model.username=credential.username;
-        this.model.password=credential.password;
-        this.model.rememberMe=credential.rememberMe;
-      }
-    });
+    this.route.queryParamMap.subscribe(queryParams => {
+      this.returnUrl = queryParams.get("returnUrl") || "/institute";
+        var activationcode = queryParams.get("code");
+        if (activationcode && activationcode.length > 0) {
+          this.activateAccount(activationcode);
+        }
+        else {
+          this.authenticationService.getUserCredential().subscribe(credential => {
+            if (credential && credential.rememberMe) {
+              this.model.username = credential.username;
+              this.model.password = credential.password;
+              this.model.rememberMe = credential.rememberMe;
+            }
+          });
+        }
+    })
   }
+
   login() {
     this.loading = true;
     this.authenticationService
@@ -45,7 +56,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          let response:any=error.json();
+          let response: any = error.json();
           // this.dataChangeNotifier.modifyUserLoginState(false);
           console.log(response);
           this.alertService.error(response.message);
@@ -53,8 +64,30 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-  forgotPassword(event){
+  activateAccount(activationcode: string) {
+    this.loading = true;
+    this.authenticationService
+      .activateAccount(activationcode)
+      .subscribe(
+        data => {
+          this.alertService.success("Account has been activated successfully. Welcome to TIMOLS — we're happy to have you!");
+        },
+        error => {
+          if(error instanceof HttpErrorResponse){
+            this.alertService.error(error.error.error);
+          }
+          else if(error.error.message && error.error.message.length>0){
+            this.alertService.error(error.error.message);
+          }
+          else{
+            this.alertService.error(error.message);
+          }
+          this.loading = false;
+        }
+      );
+  }
+  forgotPassword(event) {
     event.preventDefault();
     this.alertService.success("We have send you an one-time password on your registered mailid. Kindly use it to reset your password.")
-  }  
+  }
 }

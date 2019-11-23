@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => {
           if(data.success && data.user_id > 0){
-            this.alertService.success(data.message);
+            //this.alertService.success(data.message);
             this.model={};
             event.target.reset();
             this.alertService.success("Account is created successfully. We have send you an activation email on your registered email id. Kindly confirm your email id to activate the account.");
