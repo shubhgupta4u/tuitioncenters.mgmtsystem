@@ -27,17 +27,20 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "src/style/styles.scss",
-              "src/style/w3.css"
+            "styles": [    
+              "src/style/styles.scss",      
+              "src/style/bootstrap4/sb-admin-2.css",
+              "src/vendor/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/externalJs/script.js",
-              "node_modules/crypto-js/crypto-js.js"
+              "node_modules/crypto-js/crypto-js.js",
+              "src/vendor/jquery/jquery.js",
+              "src/vendor/bootstrap/js/bootstrap.bundle.js",
+              "src/vendor/jquery-easing/jquery.easing.js",
+              "src/externalJs/bootstrap4/sb-admin-2.js",
+              "src/vendor/chart.js/Chart.js",
+              "src/externalJs/bootstrap4/demo/chart-area-demo.js",
+              "src/externalJs/bootstrap4/demo/chart-pie-demo.js"
             ]
           },
           "configurations": {

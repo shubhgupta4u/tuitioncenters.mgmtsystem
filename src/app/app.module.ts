@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SiteHeaderComponent } from './components/common/site-header/site-header.component';
 import { SiteFooterComponent } from './components/common/site-footer/site-footer.component';
 import { SiteDashboardComponent } from './components/common/site-dashboard/site-dashboard.component';
-import { SiteSidenavbarComponent } from './components/common/site-sidenavbar/site-sidenavbar.component';
 import { AlertComponent } from './directives/alert/alert.component';
 import { AlertNotifierService } from './services/alert/alert-notifier.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -30,7 +29,6 @@ import { environment } from '../environments/environment';
     SiteHeaderComponent,
     SiteFooterComponent,
     SiteDashboardComponent,
-    SiteSidenavbarComponent,
     AlertComponent
   ],
   imports: [

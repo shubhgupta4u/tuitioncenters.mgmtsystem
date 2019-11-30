@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   { path: 'institute', loadChildren: 'src/app/components/tuition-centre/tuition-centre.module#TuitionCentreModule' },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   // { path: '**', component: PageNotFoundComponent }

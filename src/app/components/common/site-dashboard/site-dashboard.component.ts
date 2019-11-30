@@ -15,7 +15,7 @@ export class SiteDashboardComponent implements OnInit {
       console.log(document.readyState);
       if(document.readyState === "complete")
       {
-        attachSidebarCollapseClickedHandler();
+        //attachSidebarCollapseClickedHandler();
       }    
     } );
    }

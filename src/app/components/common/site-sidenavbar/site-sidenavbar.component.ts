@@ -12,7 +12,7 @@ export class SiteSidenavbarComponent implements OnInit {
   // constructor(private cacheService: LocalStorageCacheService) { }
   constructor() { }
   ngOnInit() {
-    this.getAllCategories();
+    //this.getAllCategories();
   }
 
   getAllCategories(): void {
@@ -23,6 +23,6 @@ export class SiteSidenavbarComponent implements OnInit {
 
   closeSideNavBar(event){
     event.preventDefault();
-    new closeSideNavigationBar();
+    //new closeSideNavigationBar();
   }
 }

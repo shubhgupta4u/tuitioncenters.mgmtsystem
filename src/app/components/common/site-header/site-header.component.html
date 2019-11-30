@@ -1,131 +1,60 @@
-<header>
-  <nav class="navbar-fixed-top nav-color" id="site-header">
-    <div class="container">
+<nav class="navbar navbar-expand navbar-dark bg-primary static-top topbar">
 
-      <div class="row">
-        <ul class="largenav pull-right">
-          <li class="dropdown upper-links" *ngIf="isUserAuthenticated">
-            <a href="#" class="dropdown-toggle links" data-toggle="dropdown">
-              <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp;</i>Seller
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <div class="navbar-content">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <img src="http://placehold.it/120x120" alt="Alternate Text" class="img-responsive" />
-                      <p class="text-center small">
-                        <a routerLink="/changephoto" routerLinkActive="active">Change Photo
-                        </a>
-                      </p>
-                    </div>
-                    <div class="col-md-7">
-                      <span>Shubh Gupta</span>
-                      <p class="text-muted small">
-                        shubhgupta4u@gmail.com</p>
-                      <div class="divider">
-                      </div>
-                      <a routerLink="/changepwd" routerLinkActive="active" class="btn btn-primary btn-sm active">Change Password</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="navbar-footer">
-                  <div class="navbar-footer-content">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <a routerLink="/profile" routerLinkActive="active" class="btn btn-success btn-sm" style="width: 100%">View Profile
-                        </a>
-                      </div>
-                      <div class="col-md-6">
-                        <a routerLink="/seller" routerLinkActive="active" class="btn btn-warning btn-sm pull-right" style="width: 100%">View Store</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <li class="upper-links" *ngIf="isUserAuthenticated">
-            <a class="links" href="#" routerLink="/message" routerLinkActive="active">
-              <i class="fa fa-envelope" aria-hidden="true">&nbsp;</i>Message</a>
-          </li>
-          <li class="upper-links">
+  <a class="navbar-brand mr-1" href="index.html">
+    <i class="fas fa-chalkboard-teacher"></i>
+    TIMOLS
+  </a>
 
-            <a class="links" href="#" routerLink="/" routerLinkActive="active">
-              <i class="fa fa-home" aria-hidden="true">&nbsp;</i>Home</a>
-          </li>
-          <li class="upper-links" *ngIf="!isUserAuthenticated">
-            <a class="links" routerLink="/login">
-              <i class="fa fa-user-circle-o" aria-hidden="true">&nbsp;</i>Seller</a>
-          </li>
-          <li class="upper-links" *ngIf="isUserAuthenticated">
-            <a class="links" href="#" (click)="logout($event)">
-              <i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Logout</a>
-          </li>
-        </ul>
+  <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Navbar -->
+  <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        <span class="badge badge-danger">9+</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
       </div>
+    </li>
 
-      <div class="row brand-container">
-        <form style="display: flex">
-          <div class="logo-img">
-            <a routerLink="/" routerLinkActive="active" tabindex="1">
-              <!-- <img src="../../assets/images/logo.png" /> -->
-            </a>
-          </div>
-        </form>
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-white small">Surabhi Gupta</span>
+        <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+      </a>
+      <!-- Dropdown - User Information -->
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Profile
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+          Settings
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+          Activity Log
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Logout
+        </a>
       </div>
+    </li>
+  </ul>
 
-      <div class="row">
-        <span class="toggle-button" style="font-size:30px;cursor:pointer" (click)="openSideNavBar($event)">&#9776;</span>
-
-        <div class="nav-top-menu-handheld">
-          <ul class="nav nav-pills pull-right">
-            <li>
-              <a [ngClass]="searchIconClass" href="#" (click)="openSearchBox($event)">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li *ngIf="isUserAuthenticated">
-              <a href="#">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li *ngIf="isUserAuthenticated">
-              <a href="#">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-home" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/login" *ngIf="!isUserAuthenticated">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" (click)="logout($event)" *ngIf="isUserAuthenticated">
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row">
-       
-      </div>
-
-      <div class="row" class="menu-categories">
-        <ul class="nav nav-pills nav-justified">
-          <!-- <li *ngFor="let category of categories | filterIsactive; let idx=index">
-            <a routerLinkActive="active" routerLink="/category/{{category._id}}">{{category.name}}</a>
-          </li> -->
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+</nav>

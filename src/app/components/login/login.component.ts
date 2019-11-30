@@ -5,6 +5,10 @@ import { AlertNotifierService } from "../../services/alert/alert-notifier.servic
 import { AuthenticationService } from "../../services/auth/authenication.service";
 import { DataChangeNotifierService } from "../../services/datachangenotifier/data-change-notifier.service";
 import { HttpErrorResponse } from '@angular/common/http';
+import { Configuration } from 'src/app/models/config';
+import { CryptoService } from 'src/app/services/crypto/crypto.service';
+import { LocalstorageService } from 'src/app/services/common/localstorage.service';
+import { UtilityService } from 'src/app/services/common/utility.service';
 
 
 @Component({
@@ -22,7 +26,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertNotifierService,
-    private dataChangeNotifier: DataChangeNotifierService
+    private dataChangeNotifier: DataChangeNotifierService,
+    private configuration: Configuration,
+    private cryptoService:CryptoService,
+    private localstorageService:LocalstorageService,
+    private utilityService:UtilityService
   ) { }
 
   ngOnInit() {
@@ -53,13 +61,33 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           // this.dataChangeNotifier.modifyUserLoginState(true);
+          let user:any=data;
+          // login successful if there's a jwt token in the response
+          if (user && user.token) {
+              // store user details and jwt token in local storage to keep user logged in between page refreshes
+              //var userId =  this.utilityService.get_uuidv4();
+              this.localstorageService.setUserId(this.model.username)
+              this.localstorageService.setUserItem(this.configuration.userStorageKey, JSON.stringify(user));
+          }
+          if(this.model.rememberMe){                    
+              let data:any={username: this.model.username, password: this.cryptoService.encrypt(this.model.password), rememberMe: this.model.rememberMe};
+              this.localstorageService.setItem(this.configuration.rememberMeKey, JSON.stringify(data));
+          }
+          else{        
+            this.localstorageService.removeItem(this.configuration.rememberMeKey)     
+          }
           this.router.navigate([this.returnUrl]);
+          this.loading = false;
         },
         error => {
-          let response: any = error.json();
-          // this.dataChangeNotifier.modifyUserLoginState(false);
-          console.log(response);
-          this.alertService.error(response.message);
+          if(error.error.message && error.error.message.length>0){
+            this.alertService.error(error.error.message);
+          } else  if(error.status =400 && error.error.error && error.error.error != null){
+            this.alertService.error(error.error.error);
+          }
+          else{
+            this.alertService.error(error.message);
+          }
           this.loading = false;
         }
       );
@@ -71,6 +99,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.alertService.success("Account has been activated successfully. Welcome to TIMOLS — we're happy to have you!");
+          this.loading = false;
         },
         error => {
           if(error instanceof HttpErrorResponse){

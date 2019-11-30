@@ -16,21 +16,21 @@ export class AppComponent implements OnInit  {
 
     ngOnInit() {
       
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            setTimeout(function(){
-              $('#site-body').css('margin-top',$('#site-header').outerHeight());
-            },500);
+        // this.router.events.subscribe((evt) => {
+        //     if (!(evt instanceof NavigationEnd)) {
+        //         return;
+        //     }
+        //     setTimeout(function(){
+        //       $('#site-body').css('margin-top',$('#site-header').outerHeight());
+        //     },500);
             
-            this.closeSideNavBar();
-            stopBodyScrolling(false);
-            window.scrollTo(0, 0);            
-        });
+        //     this.closeSideNavBar();
+        //     stopBodyScrolling(false);
+        //     window.scrollTo(0, 0);            
+        // });
       }
 
       closeSideNavBar(){
-        closeSideNavigationBar();
+        //closeSideNavigationBar();
       }
 }
