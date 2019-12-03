@@ -21,7 +21,7 @@ import { DataChangeNotifierService } from './services/datachangenotifier/data-ch
 import { PipesModule } from './pipes/pipes.module';
 import { HttpCacheService } from './services/cache/cache.service';
 import { LocalStorageCacheService } from './services/cache/localstoragecache.service';
-import { environment } from '../environments/environment';
+import { DirectiveModule } from './directives/directive.module';
 
 @NgModule({
   declarations: [
@@ -29,14 +29,14 @@ import { environment } from '../environments/environment';
     SiteHeaderComponent,
     SiteFooterComponent,
     SiteDashboardComponent,
-    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule, 
     AppRoutingModule,
-    PipesModule
+    PipesModule,
+    DirectiveModule
   ],
   providers: [
     DataChangeNotifierService,
@@ -57,6 +57,7 @@ import { environment } from '../environments/environment';
     // },
     HttpCacheService
   ],
+  exports:[DirectiveModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

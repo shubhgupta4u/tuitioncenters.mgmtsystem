@@ -38,6 +38,7 @@
               "src/vendor/bootstrap/js/bootstrap.bundle.js",
               "src/vendor/jquery-easing/jquery.easing.js",
               "src/externalJs/bootstrap4/sb-admin-2.js",
+              "src/externalJs/script.js",
               "src/vendor/chart.js/Chart.js",
               "src/externalJs/bootstrap4/demo/chart-area-demo.js",
               "src/externalJs/bootstrap4/demo/chart-pie-demo.js"

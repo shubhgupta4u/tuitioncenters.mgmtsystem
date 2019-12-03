@@ -59,6 +59,8 @@ export class LocalstorageService {
     this.arrLocalStorageKeys = this.getArrLocalStorageKey();
     this.arrLocalStorageKeys.forEach((p)=>localStorage.removeItem(p));
     this.arrLocalStorageKeys =[]
+    let arrLocalStorageKeys = this.getUserId() + '_arrLocalStorageKeys';
+    localStorage.removeItem(arrLocalStorageKeys);
   }
   clear(){
     this.userId = null;
@@ -67,17 +69,16 @@ export class LocalstorageService {
   private setArrLocalStorageKey(key:any){
     let arrLocalStorageKeys = this.getUserId() + '_arrLocalStorageKeys';
     this.arrLocalStorageKeys = this.getArrLocalStorageKey();
-    if(this.arrLocalStorageKeys.fill(p=>p === key).length <=0){
+    if(this.arrLocalStorageKeys.filter(p=>p === key).length <=0){
       this.arrLocalStorageKeys.push(key);
       localStorage.setItem(arrLocalStorageKeys,JSON.stringify(this.arrLocalStorageKeys));
     }
   }
-  private getArrLocalStorageKey():any{
+  private getArrLocalStorageKey(): any {
     let arrLocalStorageKeys = this.getUserId() + '_arrLocalStorageKeys';
-    if(this.arrLocalStorageKeys === undefined){
-      let val = JSON.parse(localStorage.getItem(arrLocalStorageKeys));
-      this.arrLocalStorageKeys = (val === undefined)?[]:val;
-    }
+    let val = JSON.parse(localStorage.getItem(arrLocalStorageKeys));
+    this.arrLocalStorageKeys = (val === undefined || val === null) ? [] : val;
+
     return this.arrLocalStorageKeys;
   }
 }

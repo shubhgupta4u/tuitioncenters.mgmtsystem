@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:"https://tuition-mgmt-service.herokuapp.com/api/",
+  apiBaseUrl:"http://127.0.0.1:5000/api/",
 };
 
 /*

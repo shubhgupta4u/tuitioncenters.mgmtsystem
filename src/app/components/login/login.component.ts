@@ -10,7 +10,6 @@ import { CryptoService } from 'src/app/services/crypto/crypto.service';
 import { LocalstorageService } from 'src/app/services/common/localstorage.service';
 import { UtilityService } from 'src/app/services/common/utility.service';
 
-
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -35,9 +34,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // reset login status
+    var isLogin = this.authenticationService.isLoggedIn();
     this.authenticationService.logout();
     this.route.queryParamMap.subscribe(queryParams => {
-      this.returnUrl = queryParams.get("returnUrl") || "/institute";
+      this.returnUrl = queryParams.get("returnUrl")
+      if(this.returnUrl){
+        this.alertService.info("Your session is either invalid or expire. Kindly re-login to continue...")
+      }
+      else{
+        this.returnUrl = "/institute";
+      }
+      
         var activationcode = queryParams.get("code");
         if (activationcode && activationcode.length > 0) {
           this.activateAccount(activationcode);
@@ -66,8 +73,14 @@ export class LoginComponent implements OnInit {
           if (user && user.token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               //var userId =  this.utilityService.get_uuidv4();
+              if(user["expiresIn"] == undefined || user["expiresIn"] == null){
+                user["expiresIn"] = this.configuration.session_expire_time;
+              }
+              
               this.localstorageService.setUserId(this.model.username)
-              this.localstorageService.setUserItem(this.configuration.userStorageKey, JSON.stringify(user));
+              this.localstorageService.setUserItem(this.configuration.id_token_key, JSON.stringify(user.token));
+              this.localstorageService.setUserItem(this.configuration.expires_time_key,  JSON.stringify(user.expiresIn));
+              this.authenticationService.extendExpiryTime();
           }
           if(this.model.rememberMe){                    
               let data:any={username: this.model.username, password: this.cryptoService.encrypt(this.model.password), rememberMe: this.model.rememberMe};

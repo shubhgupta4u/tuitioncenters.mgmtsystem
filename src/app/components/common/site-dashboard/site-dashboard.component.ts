@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/auth/authenication.service';
 
 declare const  attachSidebarCollapseClickedHandler: any;
 
@@ -8,8 +10,9 @@ declare const  attachSidebarCollapseClickedHandler: any;
   styleUrls: ['./site-dashboard.component.scss']  
 })
 export class SiteDashboardComponent implements OnInit {
-  title = "Online Local Store";
-  constructor() {
+  title = "TIMOLS";
+  isUserLogin: boolean = true;
+  constructor(private router: Router, private authService: AuthenticationService) {    
     console.log(document.readyState);
     document.addEventListener("readystatechange", function (event) { 
       console.log(document.readyState);
@@ -21,6 +24,12 @@ export class SiteDashboardComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.isUserLogin = this.authService.isLoggedIn();
+        return;
+      }
+    });
   }
 
 }

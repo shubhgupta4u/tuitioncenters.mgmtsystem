@@ -1,6 +1,6 @@
 <div class="regiter-container row" ng-controller="registerController">
   <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <form (ngSubmit)="f.form.valid && register($event)" #f="ngForm" novalidate>
+    <form (ngSubmit)="f.form.valid && register($event)" #f="ngForm" autocomplete="off" novalidate>
       <h2>Tuition Institute Sign Up <small>It's free and always will be.</small></h2>
       <hr class="colorgraph">
       <div class="row input-row">

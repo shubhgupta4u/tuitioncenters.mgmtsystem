@@ -32,7 +32,14 @@ export class AlertNotifierService {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'error', text: message });
     }
- 
+    warning(message: string, keepAfterNavigationChange = false) {
+        this.keepAfterNavigationChange = keepAfterNavigationChange;
+        this.subject.next({ type: 'warning', text: message });
+    }
+    info(message: string, keepAfterNavigationChange = false) {
+        this.keepAfterNavigationChange = keepAfterNavigationChange;
+        this.subject.next({ type: 'info', text: message });
+    }
     getMessage(): Observable<any> {
         return this.subject.asObservable();
     }

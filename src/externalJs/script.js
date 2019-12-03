@@ -3,7 +3,19 @@ function uuidv4() {
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
   );
 }
-
+function hideModal(id){
+  $('#' + id).modal('hide')
+}
+function registerSidebarToggleBtn(id){
+  $("#" + id).on('click', function(e) {
+    $("#" + id).toggleClass("active");
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  });
+}
 function attachSidebarCollapseClickedHandler() {
   var sidebarButton = document.getElementById("sidebarCollapse");
   if (sidebarButton != null && sidebarButton != undefined) {

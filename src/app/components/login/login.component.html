@@ -3,7 +3,7 @@
   <div class="row omb_row-sm-offset-3">
     <div class="col-xs-12 col-sm-6">
       <hr class="colorgraph">
-      <form class="omb_loginForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <form class="omb_loginForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" autocomplete="off" novalidate >
         <div class="input-group mb-3" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fa fa-user"></i></span></div>

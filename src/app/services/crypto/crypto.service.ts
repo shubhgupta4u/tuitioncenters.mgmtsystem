@@ -6,7 +6,7 @@ declare var CryptoJS: any
 @Injectable()
 export class CryptoService {
 
-  key = CryptoJS.enc.Utf8.parse('ilovemydaughterpihugupta');
+  key = CryptoJS.enc.Utf8.parse(this.config.cryptoKey);
   constructor(private config: Configuration) { }
 
   encrypt(plainText: string): string {

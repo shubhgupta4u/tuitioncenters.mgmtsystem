@@ -1,12 +1,8 @@
 export class Configuration {
-    // baseUrl: string = "http://localhost:3000/api/";
-    baseUrl: string = "https://onlinelocalstoreservice.herokuapp.com/api/";
-    userStorageKey="currentUser";
+    id_token_key="id_token";
+    expires_at_key="expires_at";
+    expires_time_key="expires_time"
     rememberMeKey="rememberMeData";
-    cryptoKey="ilovemydaughterpihu";
-    minDesktopSize: number=1024;
-    minTabletSize: number = 768;
-    minMobileLandscapeSize: number=568;
-    minPrice:number=1;
-    maxPrice:number=10000;
+    cryptoKey="ilovemydaughterpihugupta";
+    session_expire_time = 1800;
   }

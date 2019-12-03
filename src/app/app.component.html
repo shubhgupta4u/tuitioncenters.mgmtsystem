@@ -2,6 +2,6 @@
 <div class="site-content-wrapper">
   <app-site-header></app-site-header>
   <app-site-dashboard></app-site-dashboard>
-  <!-- <app-site-footer></app-site-footer> -->
+  <app-site-footer *ngIf="!isUserLogin"></app-site-footer> 
 </div>
 
