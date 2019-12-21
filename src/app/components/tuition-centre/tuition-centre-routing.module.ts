@@ -9,6 +9,8 @@ import { InstituteStudentsComponent } from './institute-students/institute-stude
 import { InstituteBatchesComponent } from './institute-batches/institute-batches.component';
 import { InstituteAssignmentsComponent } from './institute-assignments/institute-assignments.component';
 import { InstituteFeesComponent } from './institute-fees/institute-fees.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { InstituteSettingComponent } from './institute-setting/institute-setting.component';
 
 const routes: Routes = [
   {
@@ -19,7 +21,9 @@ const routes: Routes = [
       { path: 'student', component: InstituteStudentsComponent },
       { path: 'batch', component: InstituteBatchesComponent },
       { path: 'assignment', component: InstituteAssignmentsComponent },
-      { path: 'fees', component: InstituteFeesComponent }
+      { path: 'fees', component: InstituteFeesComponent },
+      { path: 'profile', component: UserProfileComponent },
+      { path: 'setting', component: InstituteSettingComponent }
     ]
   },
 ];

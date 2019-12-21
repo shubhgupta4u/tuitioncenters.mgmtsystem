@@ -16,6 +16,9 @@ import { InstituteStudentsComponent } from './institute-students/institute-stude
 import { InstituteBatchesComponent } from './institute-batches/institute-batches.component';
 import { InstituteAssignmentsComponent } from './institute-assignments/institute-assignments.component';
 import { InstituteFeesComponent } from './institute-fees/institute-fees.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { InstituteSettingComponent } from './institute-setting/institute-setting.component';
+import { SgGridComponent } from '../controls/sg-grid/sg-grid.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { InstituteFeesComponent } from './institute-fees/institute-fees.componen
     InstituteBatchesComponent,
     InstituteAssignmentsComponent,
     InstituteFeesComponent,
+    UserProfileComponent,
+    InstituteSettingComponent,
+    SgGridComponent
   ],
   imports: [
     CommonModule,

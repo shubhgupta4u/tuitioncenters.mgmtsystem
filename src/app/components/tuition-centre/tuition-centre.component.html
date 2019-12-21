@@ -9,11 +9,10 @@
         <!-- Main Content -->
         <div id="content">
 
-            <app-institute-header></app-institute-header>
+            <app-institute-header [instituteName]="instituteName"></app-institute-header>
             <app-alert></app-alert>
             <!-- Begin Page Content -->
-            <div class="container-fluid">
-                
+            <div class="container-fluid">                
                 <router-outlet></router-outlet>
             </div>
             <!-- /.container-fluid -->

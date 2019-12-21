@@ -30,7 +30,10 @@
             "styles": [    
               "src/style/styles.scss",      
               "src/style/bootstrap4/sb-admin-2.css",
-              "src/vendor/fontawesome-free/css/all.min.css"
+              "src/vendor/fontawesome-free/css/all.min.css",
+              "src/vendor/bootstrap/css/bootstrap.css",
+              "src/vendor/datatables/dataTables.bootstrap4.min.css",
+              "src/vendor/datatables/responsive.bootstrap4.min.css"
             ],
             "scripts": [
               "node_modules/crypto-js/crypto-js.js",
@@ -38,6 +41,10 @@
               "src/vendor/bootstrap/js/bootstrap.bundle.js",
               "src/vendor/jquery-easing/jquery.easing.js",
               "src/externalJs/bootstrap4/sb-admin-2.js",
+              "src/vendor/datatables/jquery.dataTables.min.js",
+              "src/vendor/datatables/dataTables.bootstrap4.js",
+              "src/vendor/datatables/dataTables.responsive.min.js",
+              "src/vendor/datatables/responsive.bootstrap4.min.js",
               "src/externalJs/script.js",
               "src/vendor/chart.js/Chart.js",
               "src/externalJs/bootstrap4/demo/chart-area-demo.js",
