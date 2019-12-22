@@ -19,6 +19,7 @@ import { InstituteFeesComponent } from './institute-fees/institute-fees.componen
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { InstituteSettingComponent } from './institute-setting/institute-setting.component';
 import { SgGridComponent } from '../controls/sg-grid/sg-grid.component';
+import { GridColumnFilterPipe } from 'src/app/pipes/grid-column-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SgGridComponent } from '../controls/sg-grid/sg-grid.component';
     InstituteFeesComponent,
     UserProfileComponent,
     InstituteSettingComponent,
-    SgGridComponent
+    SgGridComponent,
+    GridColumnFilterPipe
   ],
   imports: [
     CommonModule,

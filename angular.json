@@ -41,7 +41,7 @@
               "src/vendor/bootstrap/js/bootstrap.bundle.js",
               "src/vendor/jquery-easing/jquery.easing.js",
               "src/externalJs/bootstrap4/sb-admin-2.js",
-              "src/vendor/datatables/jquery.dataTables.min.js",
+              "src/vendor/datatables/jquery.dataTables.js",
               "src/vendor/datatables/dataTables.bootstrap4.js",
               "src/vendor/datatables/dataTables.responsive.min.js",
               "src/vendor/datatables/responsive.bootstrap4.min.js",

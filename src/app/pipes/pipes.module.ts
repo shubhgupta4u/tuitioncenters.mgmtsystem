@@ -11,7 +11,7 @@ import { SafeHtmlPipe } from './safe-html.pipe';
   declarations: [
     FilterIsactivePipe,
     TrimoverflowtextPipe,
-    SafeHtmlPipe,
+    SafeHtmlPipe
   ],
   exports:[
     FilterIsactivePipe,

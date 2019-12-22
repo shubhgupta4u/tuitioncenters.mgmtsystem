@@ -1,30 +1,28 @@
 <table id="{{gridId}}" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
     <thead>
         <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-            <th>Extn.</th>
-            <th>E-mail</th>
+            <th *ngFor="let col of columns|gridColumnFilter" [ngStyle]="setColumnStyles(col)">{{col.headerName}}</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Tiger</td>
-            <td>Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011/04/25</td>
-            <td>$320,800</td>
-            <td>5421</td>
-            <td>t.nixon@datatables.net</td>
+        <tr *ngIf="dataRows == null || dataRows.length == 0">
+            <td [attr.colspan]="columns.length">No Records Exist</td>
         </tr>
-        <tr>
+        <tr *ngFor="let data of dataRows">
+            <td *ngFor="let col of columns|gridColumnFilter">
+                <a *ngIf="col.dataType == 4" href="#" (click)="linkClickHandler(col, data)">{{data[col.field]}}</a>
+                <span *ngIf="col.dataType == 2">{{data[col.field] | date:'dd/MM/yy' }}</span>
+                <span *ngIf="col.dataType == 3">{{data[col.field] | date:'shortTime'   }}</span>
+                <span *ngIf="col.dataType == 5">
+                    <ul style="display: inline-block; padding: 0; list-style: none;">
+                        <li  *ngFor="let item of data[col.field]">{{item}}</li>
+                    </ul>
+                </span>
+                <span *ngIf="col.dataType == 6">{{data[col.field] | currency:'INR':'symbol':'1.0'}}</span>
+                <span *ngIf="!col.dataType || col.dataType == 1" style="max-width: 50vw; display: inline-block;white-space: normal;">{{data[col.field]}}</span>
+            </td>
+        </tr>
+        <!-- <tr>
             <td>Garrett</td>
             <td>Winters</td>
             <td>Accountant</td>
@@ -639,6 +637,6 @@
             <td>$112,000</td>
             <td>4226</td>
             <td>d.snider@datatables.net</td>
-        </tr>
+        </tr> -->
     </tbody>
 </table>

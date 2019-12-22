@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SgGridColumn } from '../../controls/sg-grid/sg-grid.component';
 
 @Component({
   selector: 'app-institute-fees',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class InstituteFeesComponent implements OnInit {
 
   constructor() { }
+  columns:SgGridColumn[];
 
   ngOnInit() {
   }
