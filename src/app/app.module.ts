@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SiteHeaderComponent } from './components/common/site-header/site-header.component';
 import { SiteFooterComponent } from './components/common/site-footer/site-footer.component';
 import { SiteDashboardComponent } from './components/common/site-dashboard/site-dashboard.component';
-import { AlertComponent } from './directives/alert/alert.component';
 import { AlertNotifierService } from './services/alert/alert-notifier.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './intercepter/auth.intercepter';
@@ -22,13 +21,14 @@ import { PipesModule } from './pipes/pipes.module';
 import { HttpCacheService } from './services/cache/cache.service';
 import { LocalStorageCacheService } from './services/cache/localstoragecache.service';
 import { DirectiveModule } from './directives/directive.module';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
     AppComponent,
     SiteHeaderComponent,
     SiteFooterComponent,
-    SiteDashboardComponent,
+    SiteDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +36,8 @@ import { DirectiveModule } from './directives/directive.module';
     HttpClientModule, 
     AppRoutingModule,
     PipesModule,
-    DirectiveModule
+    DirectiveModule,
+    MDBBootstrapModule.forRoot()    
   ],
   providers: [
     DataChangeNotifierService,
@@ -57,7 +58,8 @@ import { DirectiveModule } from './directives/directive.module';
     // },
     HttpCacheService
   ],
-  exports:[DirectiveModule],
+  exports:[DirectiveModule, MDBBootstrapModule],
+  schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

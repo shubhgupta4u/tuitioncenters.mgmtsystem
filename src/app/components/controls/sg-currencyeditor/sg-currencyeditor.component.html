@@ -1,0 +1,7 @@
+<div class="md-form mat-2 mx-auto">
+    <input mdbInput type="text" class="form-control text-left" [id]="identifier" [name]="name" 
+     autocomplete="off" [(ngModel)]="value"
+     (change)="onChange($event.target.value)" 
+        data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 0, 'digitsOptional': false, 'prefix': '₹ ', 'placeholder': '0'">
+    <label [for]="identifier">{{label}}</label>
+</div>

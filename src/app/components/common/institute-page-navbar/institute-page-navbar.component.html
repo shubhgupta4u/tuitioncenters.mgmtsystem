@@ -1,0 +1,16 @@
+<div class="box">
+    <div>
+        <span *ngIf="!childLink">{{parentLink}}</span>
+        <span *ngIf="childLink"><a href="#" (click)="onParentLinkClicked()">{{parentLink}}</a></span>
+        <span *ngIf="childLink"> -> {{childLink}}</span>
+    </div>
+    <div>
+        <button *ngIf="addSave" type="button" class="btn btn-primary  add-new" style="margin-left:10px;" (click)="onSaveLinkClicked()">
+            <i class="fas fa-save"></i> Save</button>            
+        <button *ngIf="addDelete" type="button" class="btn btn-danger  add-new" (click)="onDeleteLinkClicked()">
+            <i class="fas fa-trash"></i> Delete</button>
+        <button *ngIf="addNew" type="button" class="btn btn-primary  add-new" (click)="onAddNewLinkClicked()">
+            <i class="fa fa-plus"></i> Add New</button>
+    </div>
+</div>
+<div style="clear:both;margin-bottom:10px;"></div>

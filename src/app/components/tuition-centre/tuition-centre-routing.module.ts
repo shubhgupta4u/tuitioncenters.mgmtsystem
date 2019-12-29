@@ -11,6 +11,7 @@ import { InstituteAssignmentsComponent } from './institute-assignments/institute
 import { InstituteFeesComponent } from './institute-fees/institute-fees.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { InstituteSettingComponent } from './institute-setting/institute-setting.component';
+import { EditTeacherComponent } from './institute-teachers/edit-teacher/edit-teacher.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: InstituteDashboardComponent },
       { path: 'teacher', component: InstituteTeachersComponent },
+      { path: 'teacher/:id', component: EditTeacherComponent },
       { path: 'student', component: InstituteStudentsComponent },
       { path: 'batch', component: InstituteBatchesComponent },
       { path: 'assignment', component: InstituteAssignmentsComponent },

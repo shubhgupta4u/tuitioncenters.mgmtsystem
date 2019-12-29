@@ -1,0 +1,6 @@
+<div class="md-form mat-2 mx-auto" >
+    <input mdbInput [id]="identifier" type="text" [name]="name" class="form-control"
+     (change)="onDateChange($event.target.value)"  autocomplete="off" [(ngModel)]="value" readonly> 
+    <label [for]="identifier">{{label}}</label>
+  </div>
+  

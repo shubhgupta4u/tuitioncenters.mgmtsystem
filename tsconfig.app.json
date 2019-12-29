@@ -6,7 +6,9 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "app-typing/app.d.ts",
+    "src/app/components/controls/ElementBase.ts"
   ],
   "include": [
     "src/**/*.ts"

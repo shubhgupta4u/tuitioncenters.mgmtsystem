@@ -29,18 +29,11 @@
             ],
             "styles": [    
               "src/style/styles.scss",      
-              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
-              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",            
-              "node_modules/animate.css/animate.css",
-              "src/vendor/datatables/dataTables.bootstrap4.min.css",
-              "src/vendor/datatables/responsive.bootstrap4.min.css",
               "src/style/bootstrap4/sb-admin-2.css",
-              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
-              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
-              "node_modules/bootstrap-select/sass/bootstrap-select.scss",
-              "src/vendor/bootstrap/css/bootstrap-datepicker.css"
+              "src/vendor/fontawesome-free/css/all.min.css",
+              "src/vendor/bootstrap/css/bootstrap.css",
+              "src/vendor/datatables/dataTables.bootstrap4.min.css",
+              "src/vendor/datatables/responsive.bootstrap4.min.css"
             ],
             "scripts": [
               "node_modules/crypto-js/crypto-js.js",
@@ -53,13 +46,7 @@
               "src/vendor/datatables/dataTables.responsive.min.js",
               "src/vendor/datatables/responsive.bootstrap4.min.js",
               "src/externalJs/script.js",
-              "node_modules/bootstrap-select/js/bootstrap-select.js",
-              "src/vendor/bootstrap/js/bootstrap-datepicker.js",
-              "node_modules/inputmask/dist/jquery.inputmask.js",
-              "node_modules/inputmask/dist/inputmask.js",
-              "node_modules/inputmask/dist/bindings/inputmask.binding.js",
-              "node_modules/chart.js/dist/Chart.js",
-              "node_modules/hammerjs/hammer.min.js",
+              "src/vendor/chart.js/Chart.js",
               "src/externalJs/bootstrap4/demo/chart-area-demo.js",
               "src/externalJs/bootstrap4/demo/chart-pie-demo.js"
             ]

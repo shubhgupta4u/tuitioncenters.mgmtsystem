@@ -1,0 +1,25 @@
+.box {
+    //display: flex;
+    //align-items: stretch;
+}
+.box>*:first-child {
+    //align-self: flex-start;
+    float: left;
+}
+.box>*:last-child {
+    //align-self: flex-end;
+    float: right;
+}
+.box .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.box .add-new i {
+    margin-right: 4px;
+}

@@ -4,8 +4,8 @@ export class Teacher {
     lastName: string;
     batches:Array<string>;
     subjects:Array<string>;
-    salary:number;
-    startDate:Date;    
+    salary:string;
+    startDate:string;    
     mobile: string;
     email: string;
     address:string;

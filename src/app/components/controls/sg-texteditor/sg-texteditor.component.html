@@ -1,0 +1,6 @@
+<div class="md-form mat-2 mx-auto" *ngIf="type == 'text' || type == 'password'">
+  <input mdbInput [type]="type" (change)="onchange($event)" [id]="identifier" [name]="name" class="form-control" autocomplete="off" [(ngModel)]="value" [ngClass]="{invalid: (invalid | async)}">
+  <label [for]="identifier">{{label}}</label>
+</div>
+<app-validation-messages [@flyInOut]="'in,out'" *ngIf="invalid | async" [messages]="failures | async">
+</app-validation-messages>

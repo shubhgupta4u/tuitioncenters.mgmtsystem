@@ -1,0 +1,49 @@
+<app-institute-page-navbar parentLink="Teacher Data" childLink="{{teacher.firstName == undefined || teacher.firstName.trim() == ''  ?'Add New':teacher.firstName}}" (parentLinkClick)="goBack()"
+    [addDelete]="addDelete" (deleteLinkClick)="deleteTeacher()" [addSave]="addSave" (saveLinkClick)="saveTeacher()">
+</app-institute-page-navbar>
+
+<form style="margin-top: 20px;">
+
+    <div class="form-row">
+
+        <div class="col-md-3 col-sm-6">
+            <app-sg-texteditor name="firstname" type="text" label="First Name" [(ngModel)]="teacher.firstName" required></app-sg-texteditor>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <app-sg-texteditor name="lastname" type="text" label="Last Name" [(ngModel)]="teacher.lastName" required></app-sg-texteditor>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <app-sg-currencyeditor name="salary" label="Salary" [(ngModel)]="teacher.salary"></app-sg-currencyeditor>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+           <app-sg-datepicker name="startDate" label="Start Date" [(ngModel)]="teacher.startDate"></app-sg-datepicker>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6">
+            <app-sg-dropdown name="subject" label="Subject"></app-sg-dropdown>
+        </div>
+
+        <div class="col-md-6">
+            <app-sg-dropdown name="batch" label="Batch"></app-sg-dropdown>              
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6">
+            <app-sg-texteditor name="email" type="text" label="Email" [(ngModel)]="teacher.email" required></app-sg-texteditor>
+        </div>
+
+        <div class="col-md-6">
+            <app-sg-texteditor name="phone" type="text" label="Mobile No." [(ngModel)]="teacher.mobile" required></app-sg-texteditor>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-12">
+            <app-sg-texteditor name="address" type="text" label="Address" [(ngModel)]="teacher.address" required></app-sg-texteditor>
+        </div>
+    </div>
+
+</form>

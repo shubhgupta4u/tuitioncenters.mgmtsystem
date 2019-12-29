@@ -6,9 +6,7 @@ import { AuthGuard } from '../../services/auth/auth.guard';
 import { TuitionCentreComponent } from './tuition-centre.component'
 import { FormsModule } from '@angular/forms';
 import { SiteSidenavbarComponent } from '../common/site-sidenavbar/site-sidenavbar.component';
-import { InstituteHeaderComponent } from '../common/institute-header/institute-header.component';
 import { InstituteDashboardComponent } from './institute-dashboard/institute-dashboard.component';
-import { InstituteFooterComponent } from '../common/institute-footer/institute-footer.component';
 import { DirectiveModule } from 'src/app/directives/directive.module';
 import { SharedModule } from '../common/shared.module';
 import { InstituteTeachersComponent } from './institute-teachers/institute-teachers.component';
@@ -20,6 +18,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { InstituteSettingComponent } from './institute-setting/institute-setting.component';
 import { SgGridComponent } from '../controls/sg-grid/sg-grid.component';
 import { GridColumnFilterPipe } from 'src/app/pipes/grid-column-filter.pipe';
+import { EditTeacherComponent } from './institute-teachers/edit-teacher/edit-teacher.component';
+import { SgTexteditorComponent } from '../controls/sg-texteditor/sg-texteditor.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SgDatepickerComponent } from '../controls/sg-datepicker/sg-datepicker.component';
+import { SgCurrencyeditorComponent } from '../controls/sg-currencyeditor/sg-currencyeditor.component';
+import { SgDropdownComponent } from '../controls/sg-dropdown/sg-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +38,20 @@ import { GridColumnFilterPipe } from 'src/app/pipes/grid-column-filter.pipe';
     UserProfileComponent,
     InstituteSettingComponent,
     SgGridComponent,
-    GridColumnFilterPipe
+    SgTexteditorComponent,
+    GridColumnFilterPipe,
+    EditTeacherComponent,
+    SgDatepickerComponent,
+    SgDropdownComponent,
+    SgCurrencyeditorComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     TuitionCentreRoutingModule,
     DirectiveModule,
-    SharedModule
+    SharedModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers:[AuthGuard], 
 })

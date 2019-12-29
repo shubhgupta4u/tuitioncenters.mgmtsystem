@@ -1,0 +1,37 @@
+.md-form.mat-2{
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.md-form.mat-2 input[type=text],input[type=password]  {
+    border-width: 1px !important;
+    border-style: solid;
+    border-color: #ced4da;
+    border-radius: 5px;
+    padding-top: .5rem;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: .3rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    width: calc(100% - 16px);
+  }
+  .md-form.mat-2 input[type=text]:focus,input[type=password]:focus {
+    border-color: #4285f4;
+    box-shadow: inset 0px 0px 0px 1px #4285f4;
+  }
+  .md-form.mat-2 label {
+    top: 0;
+    left: 8px;
+    font-size: .875rem;
+  }
+  
+  .md-form.mat-2 label.active {
+    background: #fff;
+    font-weight: 500;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 11px;
+    top: 5px;
+    left: 8px;
+  }
+  .invalid { border: 1px solid red; }

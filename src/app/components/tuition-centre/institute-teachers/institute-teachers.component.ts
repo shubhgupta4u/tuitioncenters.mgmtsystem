@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SgGridColumn, SgGridColumnType } from '../../controls/sg-grid/sg-grid.component';
 import { Teacher } from 'src/app/models/teacher.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-institute-teachers',
@@ -9,14 +10,16 @@ import { Teacher } from 'src/app/models/teacher.model';
 })
 export class InstituteTeachersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   columns:SgGridColumn[];
-
+  addNew:boolean=true;
+  
   ngOnInit() {
     this.createColumns();
   }
-  viewTeacherData(data:any){
+  viewTeacherData(router: Router, data:any){
     console.log(data);
+    router.navigate(['/institute/teacher',data.id]);
   }
   createColumns(){
     this.columns = new Array<SgGridColumn>();
@@ -70,6 +73,7 @@ export class InstituteTeachersComponent implements OnInit {
   getData(){
     let rows=new Array<Teacher>();
     let teacher=new Teacher();
+    teacher.id=1;
     teacher.firstName="Surabhi";
     teacher.lastName="Gupta";
     teacher.batches=new Array<string>();
@@ -80,12 +84,15 @@ export class InstituteTeachersComponent implements OnInit {
     teacher.subjects.push("English");
     teacher.subjects.push("Hindi");
     teacher.subjects.push("EVS");
-    teacher.salary=10000;
-    teacher.startDate=new Date(2018,7,1);
+    teacher.salary="10000";
+    teacher.startDate=(new Date(2018,7,1)).toDateString();
     teacher.mobile = "9910007451";
     teacher.email="shubhgupta4u@gmail.com";
     teacher.address="Flat 207, Tower CS5, Supertech Capetown, Sec-74, Noida-201301"
     rows.push(teacher);
     return rows;
+  }
+  addNewTeacher(){
+    this.router.navigate(['/institute/teacher',0]);
   }
 }

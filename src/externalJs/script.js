@@ -1,6 +1,31 @@
 function initializeResponsiveGird(id) {
   return $('#' + id).DataTable();
 }
+function initializeInputMaskEditor(id) {
+  return $('#' + id).inputmask();
+}
+function initializeDropdownEditor(id) {
+  return $('#' + id).selectpicker();
+}
+function initializeDatePicker(id) {
+  return $('#' + id).datepicker({
+    updateViewDate:true,
+    format://'dd/mm/yyyy'
+    {
+      toDisplay: function (date, format, language) {
+          var d = new Date(date);
+          return d.toDateString();
+      },
+      toValue: function (date, format, language) {
+          var d = new Date(date);
+          return d.toDateString();
+      }
+    }
+  }).on('changeDate',function(e){
+    console.info(e.target.value);
+  });
+}
+
 function uuidv4() {
   return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)

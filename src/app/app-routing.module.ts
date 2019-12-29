@@ -20,14 +20,14 @@ const appRoutes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
-  // { path: '**', component: PageNotFoundComponent }
+  //  { path: '**', loadChildren: 'src/app/components/login/login.module#LoginModule'  }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   exports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { UtilityService } from 'src/app/services/common/utility.service';
+import { Router } from '@angular/router';
 import * as $ from 'jquery'
 
 declare var initializeResponsiveGird;
@@ -22,7 +23,7 @@ export class SgGridComponent implements OnInit {
   @Output("gridReady")
   gridReady= new EventEmitter<GridAPI>();
 
-  constructor(private utility:UtilityService) { 
+  constructor(private utility:UtilityService, private router: Router) { 
     this.gridId = "sg-gird-" + Date.now()
   }
 
@@ -59,7 +60,7 @@ export class SgGridComponent implements OnInit {
   }
   linkClickHandler(col:SgGridColumn, data:any){
     if(col.hyperlinkClickCallback){
-      col.hyperlinkClickCallback(data);
+      col.hyperlinkClickCallback(this.router, data);
     }
     
     return false;
